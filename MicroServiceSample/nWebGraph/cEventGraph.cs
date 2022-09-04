@@ -33,15 +33,7 @@ namespace MicroServiceSample.nWebGraph
                 if (_Controller.Events.ContainsKey("events"))
                 {
                     JToken __Events = _Controller.Events["events"];
-
-                    JsonSerializerSettings __Settings = new JsonSerializerSettings
-                    {
-                        Converters = new List<JsonConverter> { new cBadDateFixingConverter() },
-                        DateParseHandling = DateParseHandling.None
-                    };
-
                     JArray __CommandItem = (JArray)__Events;
-
 
                     foreach (var __EventItem in __Events)
                     {

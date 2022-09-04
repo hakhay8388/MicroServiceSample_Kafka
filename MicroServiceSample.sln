@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSender", "TestSender\Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSearchApp", "ElasticSearchApp\ElasticSearchApp.csproj", "{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{38BA54F3-19F6-4BBB-9BB8-294F000CAA41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38BA54F3-19F6-4BBB-9BB8-294F000CAA41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38BA54F3-19F6-4BBB-9BB8-294F000CAA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38BA54F3-19F6-4BBB-9BB8-294F000CAA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38BA54F3-19F6-4BBB-9BB8-294F000CAA41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
