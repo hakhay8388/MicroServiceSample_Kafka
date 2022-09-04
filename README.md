@@ -12,10 +12,10 @@ Yeni servisimiz üzerindeki tek REST API endpoint aracılığı ile diğer servi
 
 Kafka ise aldığı mesajları minimum 2 farklı sisteme dağıtacak. Bu iki sistemde de bu mesajları 2 farklı sistem karşılıcak.
 
-Test Mesajı Yollayıcı  : TestSender         -> Producer(Üretici)
-WEB Uygulamamız 	   : MicroServiceSample -> Producer(Üretici)
-Temsili Elastic Search : ElasticSearchApp   -> Consumer(Alıcı)
-Temsili Postgres App   : PostgresApp        -> Consumer(Alıcı)
+#### Test Mesajı Yollayıcı  : TestSender         -> Producer(Üretici)
+#### WEB Uygulamamız 	   : MicroServiceSample -> Producer(Üretici)
+#### Temsili Elastic Search : ElasticSearchApp   -> Consumer(Alıcı)
+#### Temsili Postgres App   : PostgresApp        -> Consumer(Alıcı)
 
 ### Teknik Tasarım
 
@@ -52,7 +52,7 @@ Siz URL içerisindeki port bilgisini kendinize göre özelleştiriyor olmalısı
 
 #### POST / - Event İletme
 
-## Postman ile POST tipinde BODY'yi seçerek RAW formatında JSON tipini seçerek aşağıdaki veriyi göndererek test edebilirsiniz.
+#### Postman ile POST tipinde BODY'yi seçerek RAW formatında JSON tipini seçerek aşağıdaki veriyi göndererek test edebilirsiniz.
 
 Request:
 
@@ -148,18 +148,18 @@ Alanlar:
 
 - Öncelikle docker programını yüklemelisiniz. Docker CAAS teknolojilerini araştırarak bilgi sahibi olabilirsiniz.
 
-- docker programını yükledikten sonra aşağıdaki kodu konsol açık çalıştırıyorsunuz.
+- docker programını yükledikten sonra aşağıdaki kodu projenin klasörüne konsol açıp çalıştırıyoruz.
  
 - docker-compose -f docker-compose.yml up
   
-- Yukarıdaki komut öncelikle Kafka servisini ayağa kaldırıyor olacak. Ardın "topic" adında bir kafka kanalı oluşturacak.
-  bu kadallar oluştuktan sonra ElasticSearhApp ve PostgresApp ayağa kalkıp kafkaya Consumer(Alıcı) olarak bağlanmış olacak.
+- Yukarıdaki komut öncelikle Kafka servisini ayağa kaldırıyor olacak. Ardından "topic" adında bir kafka kanalı oluşturacak.
+  bu kanal/kanallar oluştuktan sonra ElasticSearhApp ve PostgresApp ayağa kalkıp kafkaya Consumer(Alıcı) olarak bağlanmış olacak.
 
 - Ardından Test Gönderici Projemiz olan TestSender projemizi başlatabiliriz. Bu projemizi çalıştırıp enter'a bastığınızda mesajınız Kafka üzerinden diğer alıcılara dağıtılacaktır.
 
 - Yukarıdaki test sonucunda başarılı olduğunda son adım olan WEB projemiz'e geçebilirsiniz. Web projemiz olan MicroServiceSample Visual Studio içinde açtıktan sonra Play dediğimizde "Microservice Started..." mesajını aldığınızda servis veri almaya hazır demektir.
 
-- Yukarıdaki bahsi geçen postman ile ilgili JSON'ı https://localhost:"sizin portunuz yazmalı"/WebApi/WebApi adresini çağırdığınızda ilgili verileri Kafka üzerinden ilgili uygulamalara iletmiş olduğunu göreceksiniz. :)
+- Yukarıdaki bahsi geçen postman ile ilgili JSON'ı https://localhost:"sizin_portunuz_yazılmalı"/WebApi/WebApi adresini çağırdığınızda ilgili verileri Kafka üzerinden ilgili uygulamalara iletmiş olduğunu göreceksiniz. :)
 
 
 ## Sorularınız
