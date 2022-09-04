@@ -71,7 +71,7 @@ Content-Type: application/json
       "user": {
         "isAuthenticated": true,
         "provider": "b2c-internal",
-        "email": "test1@hotmail.com"
+        "email": "test1@hotmail.com",
 		"id": 1
       },
       "attributes": {
@@ -150,7 +150,7 @@ Alanlar:
 
 - docker programını yükledikten sonra aşağıdaki kodu projenin klasörüne konsol açıp çalıştırıyoruz.
  
-- docker-compose -f docker-compose.yml up
+- `docker-compose -f docker-compose.yml up`
   
 - Yukarıdaki komut öncelikle Kafka servisini ayağa kaldırıyor olacak. Ardından "topic" adında bir kafka kanalı oluşturacak.
   bu kanal/kanallar oluştuktan sonra ElasticSearhApp ve PostgresApp ayağa kalkıp kafkaya Consumer(Alıcı) olarak bağlanmış olacak.
