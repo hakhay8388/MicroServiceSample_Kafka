@@ -3,6 +3,7 @@ using Core.nDTOs.nEvent;
 using Core.nDTOs.nEvent.nEventItem;
 using Core.nKafkaConnector;
 using Core.nUtils.nJsonConverter;
+using MicroServiceSample.nWebGraph.nValidatorManager;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -13,10 +14,12 @@ namespace MicroServiceSample.nWebGraph
 { 
     public class cEventGraph 
     {
+        protected cValidatorManager ValidatorManager { get; set; }
         protected cKafkaConnector KafkaConnector { get; set; }
         public cEventGraph()
             :base()
         {
+            ValidatorManager = new cValidatorManager();
             KafkaConnector = new cKafkaConnector("127.0.0.1:9092", "topic");
             //KafkaConnector = new cKafkaConnector("host.docker.internal:29092", "topic");
             KafkaConnector.Producer.Init();
@@ -27,7 +30,6 @@ namespace MicroServiceSample.nWebGraph
             try
             {
 
-                cEvents __Event = null;
                 if (_Controller.Events.ContainsKey("events"))
                 {
                     JToken __Events = _Controller.Events["events"];
@@ -38,16 +40,25 @@ namespace MicroServiceSample.nWebGraph
                         DateParseHandling = DateParseHandling.None
                     };
 
+                    JArray __CommandItem = (JArray)__Events;
 
-                    __Event = JsonConvert.DeserializeObject<cEvents>(_Controller.Events.ToString(), __Settings);
 
-                    foreach (cEventItem __Item in __Event.events)
+                    foreach (var __EventItem in __Events)
                     {
-                        ///Validatora gönderilecek
-                        KafkaConnector.Producer.Produce(JsonConvert.SerializeObject(__Item));
+                        List<string> __ValidationErrors = ValidatorManager.Validate<cEventItem>((JObject)__EventItem);
+                        if (__ValidationErrors.Count == 0)
+                        {
+                            KafkaConnector.Producer.Produce(__EventItem.ToString());
+                        }
+                        else
+                        {
+                            foreach (string __ValidationError in __ValidationErrors)
+                            {
+                                Console.WriteLine($"Error {__ValidationError}, message can not validate! message is :  {__EventItem.ToString()}");
+                            }
+                        }
                     }
 
-                    Console.WriteLine(JsonConvert.SerializeObject(__Event));
                 }
             }
             catch (Exception _Ex)

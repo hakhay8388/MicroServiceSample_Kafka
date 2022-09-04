@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "wn9ZpYMbakQPrxPGUCX7NW79OcShqhupaAtjl3+HU0XGz3e97DVYBKgs1r3qi0LN0aoAk3tdkD4jFzv9jYLgaw==",
+  "dgSpecHash": "By68gtfo9xhO5C3t06Y/iZK7tpUDibxpkZoDDu9mBW5gNgQW2M448f6Jl89rhnVTvNl5F/0TEYzo1SGKVjFFLA==",
   "success": true,
   "projectFilePath": "H:\\VirtualStyle_Projects\\MicroServiceSample\\TestSender\\TestSender.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VirtualStyle\\.nuget\\packages\\confluent.kafka\\1.9.2\\confluent.kafka.1.9.2.nupkg.sha512",
     "C:\\Users\\VirtualStyle\\.nuget\\packages\\librdkafka.redist\\1.9.2\\librdkafka.redist.1.9.2.nupkg.sha512",
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\VirtualStyle\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\VirtualStyle\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
   ],

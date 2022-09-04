@@ -1,4 +1,5 @@
 ﻿using MicroServiceSample.nWebGraph;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
@@ -21,7 +22,7 @@ namespace MicroServiceSample.nWebGraph
         }
 
         [HttpPost("[action]")]
-        public JsonResult WebApi()
+        public IActionResult WebApi()
         {
             Stream ___Request = Request.Body;
             if (___Request.CanSeek)
@@ -34,7 +35,7 @@ namespace MicroServiceSample.nWebGraph
 
             EventGraph.Interpret(this);
 
-            return Json(Events);
+            return StatusCode(StatusCodes.Status200OK);
         }
     }
 }

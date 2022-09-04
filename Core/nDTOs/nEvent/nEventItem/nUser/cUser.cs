@@ -5,11 +5,18 @@ using System.Threading.Tasks;
 
 namespace Core.nDTOs.nEvent.nEventItem.nUser
 {
-    public class cUser
+    public class cUser : IDTOObject
     {
+        [DTOField(false)]
         public bool isAuthenticated;
+
+        [DTOField(false)]
         public string provider;
+
+        [DTOField(false)]
         public long id;
+
+        [DTOField(true)]
         public string email;
     }
 }

@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "TestSender/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0"
+          "Core": "1.0.0",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.0"
         },
         "runtime": {
           "TestSender.dll": {}
@@ -155,6 +156,7 @@
           }
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.17.0": {},
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -194,6 +196,13 @@
       "sha512": "sha512-ljLtyamiEq7Ky36LAv8gAz69YfpLBw2P/y1eDuqwAm9RiDINtWrkg/hqIBTK2Gc7ydJaKlySa1BxMG7RHVD26A==",
       "path": "librdkafka.redist/1.9.2",
       "hashPath": "librdkafka.redist.1.9.2.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.17.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gfDtAL1WhkjbRdbZlt/ZeQYCbgRpNCZCGj+yeqHObsNFRDHjq8qZJOX9AyTxJpSRYMi9SJk7JDyAbbVYRgEhAA==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.17.0",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
