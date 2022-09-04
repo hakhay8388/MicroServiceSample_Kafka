@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "mGa3En+8BuNT+kiKcMUCl15cWzlEE8qKXytqc2f7Zd280bkhRZAT1/6Rrk3Zg/nG3oL7awXd9xzo2XpB4sjK+g==",
+  "success": true,
+  "projectFilePath": "H:\\VirtualStyle_Projects\\MicroServiceSample\\PostgresApp\\PostgresApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\confluent.kafka\\1.9.2\\confluent.kafka.1.9.2.nupkg.sha512",
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\librdkafka.redist\\1.9.2\\librdkafka.redist.1.9.2.nupkg.sha512",
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

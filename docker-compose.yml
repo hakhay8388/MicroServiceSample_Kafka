@@ -1,18 +1,6 @@
 version: '2.1'
 
 services:
-  elasticsearchapp:
-    image: ${DOCKER_REGISTRY-}elasticsearchapp
-    build:
-      context: .
-      dockerfile: ElasticSearchApp/Dockerfile
-      
-  postgresapp:
-    image: ${DOCKER_REGISTRY-}postgresapp
-    build:
-      context: .
-      dockerfile: PostgresApp/Dockerfile
-      
   zoo1:
     image: confluentinc/cp-zookeeper:7.2.1
     hostname: zoo1
@@ -46,6 +34,45 @@ services:
       KAFKA_JMX_HOSTNAME: ${DOCKER_HOST_IP:-127.0.0.1}
       KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
     depends_on:
       - zoo1
+
+  init-kafka:
+    image: confluentinc/cp-kafka:7.2.1
+    depends_on:
+      - kafka1
+    entrypoint: [ '/bin/sh', '-c' ]
+    command: |
+      "
+      # blocks until kafka is reachable
+      kafka-topics --bootstrap-server kafka1:29092 --list
+
+      echo -e 'Creating kafka topics'
+      kafka-topics --bootstrap-server kafka1:29092 --create --if-not-exists --topic topic --replication-factor 1 --partitions 1
+
+      echo -e 'Successfully created the following topics:'
+      kafka-topics --bootstrap-server kafka1:29092 --list
+      "
+
+  elasticsearchapp:
+    image: ${DOCKER_REGISTRY-}elasticsearchapp
+    build:
+      context: .
+      dockerfile: ElasticSearchApp/Dockerfile
+    depends_on:
+      init-kafka:
+        condition: service_completed_successfully
+      
+  postgresapp:
+    image: ${DOCKER_REGISTRY-}postgresapp
+    build:
+      context: .
+      dockerfile: PostgresApp/Dockerfile
+    depends_on:
+      init-kafka:
+        condition: service_completed_successfully
+    
+      
+  
 

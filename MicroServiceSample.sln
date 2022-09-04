@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroServiceSample", "Micro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgresApp", "PostgresApp\PostgresApp.csproj", "{EA5B9F54-92BB-448B-BF8E-5EB027927C1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{52AD2D01-8C32-4A32-8DE8-A664C962FEAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{52AD2D01-8C32-4A32-8DE8-A664C962FEAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSender", "TestSender\TestSender.csproj", "{F2ABC6FA-743C-43CD-8821-1638F9E6037B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSender", "TestSender\TestSender.csproj", "{F2ABC6FA-743C-43CD-8821-1638F9E6037B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticSearchApp", "ElasticSearchApp\ElasticSearchApp.csproj", "{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSearchApp", "ElasticSearchApp\ElasticSearchApp.csproj", "{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafkaSampleTopicCreater", "KafkaSampleTopicCreater\KafkaSampleTopicCreater.csproj", "{E51C3B51-8130-4BAB-BAA2-CFC3A749FF88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF7243A1-8CB8-4ECC-B67E-25C8E5EA5364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51C3B51-8130-4BAB-BAA2-CFC3A749FF88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51C3B51-8130-4BAB-BAA2-CFC3A749FF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51C3B51-8130-4BAB-BAA2-CFC3A749FF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51C3B51-8130-4BAB-BAA2-CFC3A749FF88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

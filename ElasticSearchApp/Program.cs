@@ -10,8 +10,8 @@ namespace ElasticSearchApp
         {
             cKafkaListener __KafkaListener = new cKafkaListener();
 
-            //cKafkaConnector __KafkaConnector = new cKafkaConnector("127.0.0.1:9092", "eventlog");
-            cKafkaConnector __KafkaConnector = new cKafkaConnector("host.docker.internal:29092", "eventlog");
+            //cKafkaConnector __KafkaConnector = new cKafkaConnector("127.0.0.1:9092", "topic");
+            cKafkaConnector __KafkaConnector = new cKafkaConnector("host.docker.internal:29092", "topic");
             __KafkaConnector.Consumer.StartListener("ElasticSearch", __KafkaListener);
 
             Console.WriteLine("Elactic Search App Started");

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "R6ItgZ43fTdYsXqd+a2S+U6DrcBpmrBsAcVMuDa9kAeJ5emGNiy3ZwQa6hSYOfM9fZTT40bCzOh3ZVVlHLVTBw==",
+  "success": true,
+  "projectFilePath": "H:\\VirtualStyle_Projects\\MicroServiceSample\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\confluent.kafka\\1.9.2\\confluent.kafka.1.9.2.nupkg.sha512",
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\librdkafka.redist\\1.9.2\\librdkafka.redist.1.9.2.nupkg.sha512",
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\VirtualStyle\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

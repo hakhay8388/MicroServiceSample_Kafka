@@ -18,6 +18,7 @@ namespace MicroServiceSample.nWebGraph
             :base()
         {
             KafkaConnector = new cKafkaConnector("127.0.0.1:9092", "topic");
+            //KafkaConnector = new cKafkaConnector("host.docker.internal:29092", "topic");
             KafkaConnector.Producer.Init();
         }
 
