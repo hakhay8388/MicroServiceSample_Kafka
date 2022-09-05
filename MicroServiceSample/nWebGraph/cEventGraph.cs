@@ -27,37 +27,28 @@ namespace MicroServiceSample.nWebGraph
 
         public void Interpret(cBaseController _Controller)
         {
-            try
+            if (_Controller.Events.ContainsKey("events"))
             {
+                JToken __Events = _Controller.Events["events"];
+                JArray __CommandItem = (JArray)__Events;
 
-                if (_Controller.Events.ContainsKey("events"))
+                foreach (var __EventItem in __Events)
                 {
-                    JToken __Events = _Controller.Events["events"];
-                    JArray __CommandItem = (JArray)__Events;
-
-                    foreach (var __EventItem in __Events)
+                    List<string> __ValidationErrors = ValidatorManager.Validate<cEventItem>((JObject)__EventItem);
+                    if (__ValidationErrors.Count == 0)
                     {
-                        List<string> __ValidationErrors = ValidatorManager.Validate<cEventItem>((JObject)__EventItem);
-                        if (__ValidationErrors.Count == 0)
+                        KafkaConnector.Producer.Produce(__EventItem.ToString());
+                    }
+                    else
+                    {
+                        foreach (string __ValidationError in __ValidationErrors)
                         {
-                            KafkaConnector.Producer.Produce(__EventItem.ToString());
-                        }
-                        else
-                        {
-                            foreach (string __ValidationError in __ValidationErrors)
-                            {
-                                Console.WriteLine($"Error {__ValidationError}, message can not validate! message is :  {__EventItem.ToString()}");
-                            }
+                            Console.WriteLine($"Error {__ValidationError}, message can not validate! message is :  {__EventItem.ToString()}");
                         }
                     }
-
                 }
+
             }
-            catch (Exception _Ex)
-            {
-               //Exception Handling
-            }
-            
         }
 
     }
