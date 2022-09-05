@@ -33,7 +33,15 @@ namespace MicroServiceSample.nWebGraph
 
             Events = JObject.Parse(__JSON);
 
-            EventGraph.Interpret(this);
+            try
+            {
+                EventGraph.Interpret(this);
+            }
+            catch (Exception _Ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest);
+                //Exception Handling
+            }    
 
             return StatusCode(StatusCodes.Status200OK);
         }
