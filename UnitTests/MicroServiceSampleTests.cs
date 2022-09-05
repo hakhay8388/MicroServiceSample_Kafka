@@ -1,16 +1,16 @@
 using Core.nDTOs.nEvent.nEventItem;
 using Core.nKafkaConnector;
 using MicroServiceSample.nWebGraph;
-using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
-using System.Text.Json.Nodes;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
+using Unity.Injection;
 
 namespace UnitTests
 {
     [TestClass]
-    public class UnitTest1 : IMessageReceiver
+    public class MicroServiceSampleTests : cBaseTest, IMessageReceiver
     {
         static cKafkaConnector KafkaConnectorSender { get; set; }
 
@@ -19,22 +19,69 @@ namespace UnitTests
 
         static string KafkaTestString = "";
 
+        private bool ControlKafka()
+        {
+            string __Output = "";
+            using (Process __Process = new Process())
+            {
+                __Process.StartInfo.FileName = "docker";
+                __Process.StartInfo.UseShellExecute = false;
+                __Process.StartInfo.Arguments = "ps -a";
+                __Process.StartInfo.RedirectStandardOutput = true;
+                __Process.StartInfo.CreateNoWindow = true;
+                __Process.StartInfo.RedirectStandardError = true;
+                __Process.Start();
+
+
+                StreamReader __Reader = __Process.StandardOutput;
+                __Output = __Reader.ReadToEnd();
+
+
+                __Process.WaitForExit();
+            }
+
+            Match __Match = Regex.Match(__Output, "kafka1");
+            Match __Match2 = Regex.Match(__Output, "zoo1");
+
+            
+            return __Match.Success && __Match2.Success;
+
+        }
+
+
+
         public void ReceiveMessage(string _Message)
         {
             KafkaTestString = _Message;
         }
 
+        [TestMethod]        
+        public void Test1_KafkaTest_KafkaIsExistTest()
+        {
+            if (!ControlKafka())
+            {
+                //throw new Exception("Öncelikle kafka servisini ayaða kaldýrmanýz gerekiyor! \"docker-compose -f docker-compose.yml up\"");
+                Assert.Fail("Öncelikle kafka servisini ayaða kaldýrmanýz gerekiyor! \"docker-compose -f docker-compose.yml up\"");
+            }
+        }
+
         [TestMethod]
-        public void Test1_KafkaTest_Consumer()
+        public void Test2_KafkaTest_Consumer()
         {
             KafkaTestString = "";
             KafkaConnectorSender = new cKafkaConnector("127.0.0.1:9092", "topic");
-            KafkaConnectorSender.Consumer.StartListener("UnitTest", this);
+            ///
+            /// Þuanda ayaða kalkan kafka servisi ayný grup ID ile tek consumer üzerinden çalýþýyor.
+            /// Birden fazla peþpeþe test sýrasýnda testler baþarýsýz çýktýðý için random bir grup oluþturuluyor.
+            /// Bu gruba belirli bir süre istek olmayýnca kafka tarafýndan düþürüldüðü için poroblem olmuyor.
+            //
+            KafkaConnectorSender.Consumer.StartListener("UnitTest" + DateTime.Now.ToFileTimeUtc().ToString().ToString(), this);
+            Thread.Sleep(10000);
         }
 
 
         [TestMethod]
-        public void Test2_KafkaTest_ProduceAndControl()
+        public void Test3_KafkaTest_ProduceAndControl()
         {
             KafkaConnectorReceiever = new cKafkaConnector("127.0.0.1:9092", "topic");
             KafkaConnectorReceiever.Producer.Init();
@@ -55,7 +102,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void Test3_EventTest()
+        public void Test4_EventTest()
         {
             cEventGraph __EventGraph = new cEventGraph();
             WebApiController __ForTest = new WebApiController(__EventGraph);

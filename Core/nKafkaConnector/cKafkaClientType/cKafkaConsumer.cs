@@ -39,7 +39,7 @@ namespace Core.nKafkaConnector.cKafkaClientType
             {
                 BootstrapServers = m_KafkaConnector.KafkaServer,
                 GroupId = m_GroupId,
-                AutoOffsetReset = AutoOffsetReset.Earliest
+                AutoOffsetReset = AutoOffsetReset.Latest
             };
 
             using (var __Consumer = new ConsumerBuilder<Ignore, string>(__Config).Build())
